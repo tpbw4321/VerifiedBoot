@@ -9,14 +9,21 @@ Instructions to create a build environment on a Ubuntu 16.04 LTS amd64 machine f
 
 It is recommended to start with the following pre-requisite.
 
+| S.No | Pre-Requisite |
+| ---         |     ---      |
+| 1.   | A decent x86_64 machine money can buy     |
+| 2.   | Ubuntu 16.04 LTS running on the above       |
+| 3.   | Internet connection     |
+| 4.   | One Brain and Two Hands       |
+
 ```
 - A decent x86_64 machine money can buy
 - Ubuntu 16.04 LTS running on the above
 - Internet connection
-- One Brain and Two hands
+- One Brain and Two Hands
 ```
 
-### Installing
+### nstalling
 
 A step by step series of examples that tell you how to get a development env running
 
