@@ -7,7 +7,7 @@ Instructions to create a build environment on a Ubuntu 16.04 LTS amd64 machine f
 
 ### Prerequisites
 
-It is recommended to start to start with the following pre-requisite.
+It is recommended to start with the following pre-requisite.
 
 ```
 - A decent x86_64 machine money can buy
