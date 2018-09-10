@@ -79,11 +79,9 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is distributed under the [GPLV3 License](https://opensource.org/licenses/GPL-3.0)
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thiyagarajan Selvam github.com/thselvam
 
