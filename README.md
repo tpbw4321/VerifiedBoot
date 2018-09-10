@@ -73,7 +73,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Pratap Maddimsetty** - [PratapMs GitHub](https://github.com/pratpms)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -83,5 +83,5 @@ This project is distributed under the [GPLV3 License](https://opensource.org/lic
 
 ## Acknowledgments
 
-* Thiyagarajan Selvam github.com/thselvam
+* Open Source Community
 
