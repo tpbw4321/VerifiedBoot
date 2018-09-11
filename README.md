@@ -12,10 +12,10 @@ The Build-root platform has evolved over the years and finally with the support 
 | ITB | Combination and signed copy of config, kernel,rootfs |
 | RootFS | Non Secured Image |
 
-For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website
+For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate verified boot sequence.
 
+![VerifiedBoot](Verified-Boot.png)
 
-due to lack of hardware demonstrating the HAB capabilities cannot showcased for this project, instead Flattened  Image Tree mechanism is selected to compensate the HAB mechanism, though we won’t be implementing the (OPTEE) today, while going forward over the building the images for FIT, it will be explain what parts of the build root need to be tweaked to get the below (TRUST-ZONE OPTEE) working
 
 ### Prerequisites
 
