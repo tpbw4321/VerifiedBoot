@@ -3,7 +3,19 @@
 
 ## Getting Started
 
-Instructions to create a build environment on a Ubuntu 16.04 LTS amd64 machine followed by creating FIT image for i.MX6 reference platform that consists of verified uboot, kernel and dtb images. Refer to testing section in this document to boot the FIT image on a QEMU sabrelite machine.
+The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials 
+
+| Components | Description |
+| ---         |     ---      |
+| U-boot | Primary Root of Trust |
+| zImage | Non Secured World Image |
+| ITB | Combination and signed copy of config, kernel,rootfs |
+| RootFS | Non Secured Image |
+
+For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website
+
+
+due to lack of hardware demonstrating the HAB capabilities cannot showcased for this project, instead Flattened  Image Tree mechanism is selected to compensate the HAB mechanism, though we won’t be implementing the (OPTEE) today, while going forward over the building the images for FIT, it will be explain what parts of the build root need to be tweaked to get the below (TRUST-ZONE OPTEE) working
 
 ### Prerequisites
 
