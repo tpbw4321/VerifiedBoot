@@ -57,14 +57,14 @@ Copy the following list of files from this repository to the respective buildroo
 Configure the Build root system by issuing the following command from the root directory
 
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig ```
-       
->All of the above files are provided  part of the common.tar.gz file
->The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot
->TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of Hardware
-           
- Step4:
-       With the below command and provided patches we should be able to glide through the compilation process
-       make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+
+
+>
+<dd>All of the above files are provided  part of the common.tar.gz file. The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot. TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of hardware capabilities.</dd>
+
+### Step4: 
+With the below command and provided patches we should be able to glide through the compilation process
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
        
        Note:
        The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
