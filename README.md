@@ -41,26 +41,35 @@ It is recommended to start with the following pre-requisite.
 
 A step by step series of examples that tell you how to get a development env running
 
-Step1: Clone the latest Buidroot, i.e. master copy of the software
+Step1: Clone the latest Buidroot, i.e. master branch would be suffice
        https://github.com/buildroot/buildroot.git
+       
+       Note:
+       The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
 Step2:
        Copy the following items provided from the repository to the respective buildroot folders
        
-       | S.No | Item to copy          | Target        |
-       | ---- |-----------------------|---------------|
-       | 1.   | Patches               | Board Folder  |
-       | 2.   | smith-digital-sign.sh | Board Folder  |
-       | 3.   | smithdigital.its      | Board Folder  |
-       | 4.   | nitrogen6sx_defconfig | Board Folder  |
+       | S.No | Item to copy          | Target         |
+       | ---- |-----------------------|----------------|
+       | 1.   | Patches               | Common Folder  |
+       | 2.   | smith-digital-sign.sh | Common Folder  |
+       | 3.   | smithdigital.its      | Common Folder  |
+       | 4.   | nitrogen6sx_defconfig | Common Folder  |
        
  Step3:
        Need to configure the Build root system, following is the simple command
        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig
        
        Note: 
-       The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes with 
-       respective to generate images for verified Boot
-            
+       
+       All of the above files are provided  part of the common.tar.gz file
+       
+       The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes  
+       to generate images for verified Boot
+       
+       TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration because 
+       of lack Hardware
+           
  Step4:
        With the below command and provided patches we should be able to glide through the compilation process
        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
@@ -76,7 +85,8 @@ Step2:
         1) build: All of the software packages downloaded as part of the build process
         2) host : The executable files obtained from the above build command
         3) Images : All of the dtb, rootfilesystem (rootfs.ext2) , uboot.bin , zImage , public & private keys, ITS and ITB
-        4) target : Expanded format of the RootFile system (rootfs.ext2), which can be overlayed for extendabiity 
+        4) target : Expanded format of the RootFile system (rootfs.ext2), which can be overlayed for extendabiity  
+                    Creating a folder with custom configuration and provide the path to buildroot through BR2_ROOTFS_OVERLAY
  
  Step6:
         Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm  
@@ -126,12 +136,6 @@ Step4)
 ![Verified Boot Demo](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo1.png)
 ![Verified Boot Demo Booting](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo.png)
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 ## Authors
 
 * **Pratap Maddimsetty** - [PratapMs GitHub](https://github.com/pratpms)
@@ -146,4 +150,8 @@ This project is distributed under the [GPLV3 License](https://opensource.org/lic
 * https://boundarydevices.com/high-assurance-boot-hab-dummies/
 * https://elinux.org/images/f/f8/Verified_Boot.pdf
 * https://lxr.missinglinkelectronics.com/uboot/doc/uImage.FIT/
+* https://events.static.linuxfound.org/sites/events/files/slides/U-Boot%20FIT%20for%20Xen.pdf
+* http://www.informit.com/articles/article.aspx?p=1647051&seqNum=5
+* https://github.com/maximeh/buildroot/blob/master/docs/manual/customize-rootfs.txt
+
 
