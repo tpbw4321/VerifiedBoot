@@ -72,7 +72,7 @@ With the below command and provided patches we should be able to glide through t
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ```
 
 <p align="justify">
-The **common.tar.gz** files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
+The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
 has all the necessary patches, board specific files and post script.
 </p>
        
