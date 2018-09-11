@@ -12,9 +12,17 @@ The Build-root platform has evolved over the years and finally with the support 
 | ITB | Combination and signed copy of config, kernel,rootfs |
 | RootFS | Non Secured Image |
 
-For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate verified boot sequence.
+## Secured Boot
+
+For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate secured boot.
 
 ![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Secured-Boot.png)
+
+## Verified Boot
+
+The sequence of Verified boot follows the unsecured booting, without the use of trust zone. Even for verification and validation of the public and private hash keys, the boot process runs from unsecured execution environment. In the following diagram the section(s) marked green bubble represents un-secured items and the ones that are marked in red depicts secured components, which has been fused with privately signed hash. 
+
+![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot.png)
 
 ### Prerequisites
 
