@@ -37,38 +37,30 @@ It is recommended to start with the following pre-requisite.
 | 5.   | Install arm tool chain using <br /> ``` sudo apt-get install gcc-arm-linux-gnueabihf ``` |
 | 6.   | One Brain and Two Hands       |
 
-### Installing
+## Build Instruction
 
-A step by step series of examples that tell you how to get a development env running
+### Step1: Clone the latest Buidroot from github
+``` git clone https://github.com/buildroot/buildroot.git ```
+> The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
 
-Step1: Clone the latest Buidroot, i.e. master branch would be suffice
-       https://github.com/buildroot/buildroot.git
+### Step2: Copy build files
+Copy the following list of files from this repository to the respective buildroot folders mantioned in Target column
+
+| S.No | Item to copy          | Target         |
+| ---  | ---                   | ---            |
+| 1.   | Patches               | Common Folder  |
+| 2.   | smith-digital-sign.sh | Common Folder  |
+| 3.   | smithdigital.its      | Common Folder  |
+| 4.   | nitrogen6sx_defconfig | Common Folder  |
        
-       Note:
-       The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
-Step2:
-       Copy the following items provided from the repository to the respective buildroot folders
+### Step3: Configure
+Configure the Build root system by issuing the following command from the root directory
+
+``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig ```
        
-       | S.No | Item to copy          | Target         |
-       | ---- |-----------------------|----------------|
-       | 1.   | Patches               | Common Folder  |
-       | 2.   | smith-digital-sign.sh | Common Folder  |
-       | 3.   | smithdigital.its      | Common Folder  |
-       | 4.   | nitrogen6sx_defconfig | Common Folder  |
-       
- Step3:
-       Need to configure the Build root system, following is the simple command
-       make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig
-       
-       Note: 
-       
-       All of the above files are provided  part of the common.tar.gz file
-       
-       The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes  
-       to generate images for verified Boot
-       
-       TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration because 
-       of lack Hardware
+>All of the above files are provided  part of the common.tar.gz file
+>The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot
+>TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of Hardware
            
  Step4:
        With the below command and provided patches we should be able to glide through the compilation process
