@@ -34,7 +34,7 @@ It is recommended to start with the following pre-requisite.
 | 2.   | Ubuntu 16.04 LTS running on the above       |
 | 3.   | Internet connection     |
 | 4.   | Bleeding Edge of Build-Root right from the [build-root github](https://github.com/buildroot/buildroot.git)
-| 5.   | Install arm tool chain using ``` sudo apt-get install gcc-arm-linux-gnueabihf ``` |
+| 5.   | Install arm tool chain using <br /> ``` sudo apt-get install gcc-arm-linux-gnueabihf ``` |
 | 4.   | One Brain and Two Hands       |
 
 ```
