@@ -2,8 +2,9 @@
 >Verified Boot of FIT image built using BuildRoot
 
 ## Getting Started
-
-The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials 
+<p align="justify">
+The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials
+</p>
 
 | Components | Description |
 | ---         |     ---      |
@@ -14,13 +15,15 @@ The Build-root platform has evolved over the years and finally with the support 
 
 ## Secured Boot
 
-For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate secured boot.
+<p align="justify">For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate secured boot.
+</p>
 
 ![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Secured-Boot.png)
 
 ## Verified Boot
 
-The sequence of Verified boot follows the unsecured booting, without the use of trust zone. Even for verification and validation of the public and private hash keys, the boot process runs from unsecured execution environment. In the following diagram the section(s) marked green bubble represents un-secured items and the ones that are marked in red depicts secured components, which has been fused with privately signed hash. 
+<p align="justify">The sequence of Verified boot follows the unsecured booting, without the use of trust zone. Even for verification and validation of the public and private hash keys, the boot process runs from unsecured execution environment. In the following diagram the section(s) marked green bubble represents un-secured items and the ones that are marked in red depicts secured components, which has been fused with privately signed hash.
+</p>
 
 ![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot.png)
 
@@ -58,27 +61,28 @@ Configure the Build root system by issuing the following command from the root d
 
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig ```
 
+<p align="justify">All of the above files are provided  part of the common.tar.gz file. The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot. TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of hardware capabilities.
+</p>
 
->
-<dd>All of the above files are provided  part of the common.tar.gz file. The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot. TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of hardware capabilities.</dd>
-
-### Step4: 
+### Step4: Build
 With the below command and provided patches we should be able to glide through the compilation process
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ```
        
-       Note:
-       The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
-       has all the necessary patches, board specific files and post script
+<p align="justify">
+The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
+has all the necessary patches, board specific files and post script.
+</p>
        
- Step5:
-       The compiler out of the above mentioned command will have all of the host signing utilities and target booting images
-       PATH: ls ${PWD}/output
-       
-        1) build: All of the software packages downloaded as part of the build process
-        2) host : The executable files obtained from the above build command
-        3) Images : All of the dtb, rootfilesystem (rootfs.ext2) , uboot.bin , zImage , public & private keys, ITS and ITB
-        4) target : Expanded format of the RootFile system (rootfs.ext2), which can be overlayed for extendabiity  
-                    Creating a folder with custom configuration and provide the path to buildroot through BR2_ROOTFS_OVERLAY
+### Step5: Output
+Output of the compilation process if found at output directory out of the above mentioned command will have all of the host signing utilities and target booting images
+``` ls ${PWD}/output ```
+
+| S.No | Folder | Description |
+| --- | --- | --- |
+| 1. | build | All of the software packages downloaded as part of the build process |
+| 2. | host | The executable files obtained from the above build command |
+| 3. | images | All of the dtb, rootfilesystem (rootfs.ext2) , uboot.bin , zImage , public & private keys, ITS and ITB
+| 4. | target | Expanded format of the RootFile system (rootfs.ext2), which can be overlayed for extendabiity creating a folder with custom configuration and provide the path to buildroot through BR2_ROOTFS_OVERLAY |
  
  Step6:
         Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm  
