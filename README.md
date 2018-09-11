@@ -35,16 +35,9 @@ It is recommended to start with the following pre-requisite.
 | 3.   | Internet connection     |
 | 4.   | Bleeding Edge of Build-Root right from the [build-root github](https://github.com/buildroot/buildroot.git)
 | 5.   | Install arm tool chain using <br /> ``` sudo apt-get install gcc-arm-linux-gnueabihf ``` |
-| 4.   | One Brain and Two Hands       |
+| 6.   | One Brain and Two Hands       |
 
-```
-- A decent x86_64 machine money can buy
-- Ubuntu 16.04 LTS running on the above
-- Internet connection
-- One Brain and Two Hands
-```
-
-### nstalling
+### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
