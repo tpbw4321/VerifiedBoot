@@ -42,13 +42,13 @@ It is recommended to start with the following pre-requisite.
 
 ## Build Instruction
 
-### Step1: Clone the latest Buidroot from github
+### Step 1: Clone the latest Buidroot from github
 
 ``` git clone https://github.com/buildroot/buildroot.git ```
 
 > The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
 
-### Step2: Copy build files
+### Step 2: Copy build files
 Copy the following list of files from this repository to the respective buildroot folders mantioned in Target column
 
 | S.No | Item to copy          | Target         |
@@ -58,7 +58,7 @@ Copy the following list of files from this repository to the respective buildroo
 | 3.   | smithdigital.its      | Common Folder  |
 | 4.   | nitrogen6sx_defconfig | Common Folder  |
        
-### Step3: Configure
+### Step 3: Configure
 Configure the Build root system by issuing the following command from the root directory
 
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig ```
@@ -66,7 +66,7 @@ Configure the Build root system by issuing the following command from the root d
 <p align="justify">All of the above files are provided  part of the common.tar.gz file. The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot. TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of hardware capabilities.
 </p>
 
-### Step4: Build
+### Step 4: Build
 With the below command and provided patches we should be able to glide through the compilation process
 
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ```
@@ -76,8 +76,11 @@ The common.tar.gz files should go into the "board/boundarydevices" of the origin
 has all the necessary patches, board specific files and post script.
 </p>
        
-### Step5: Output
+### Step 5: Output
+<p align="justify">
 Output of the compilation process if found at output directory out of the above mentioned command will have all of the host signing utilities and target booting images
+</p>
+
 ``` ls ${PWD}/output ```
 
 | S.No | Folder | Description |
@@ -87,15 +90,18 @@ Output of the compilation process if found at output directory out of the above 
 | 3. | images | All of the dtb, rootfilesystem (rootfs.ext2) , uboot.bin , zImage , public & private keys, ITS and ITB
 | 4. | target | Expanded format of the RootFile system (rootfs.ext2), which can be overlayed for extendabiity creating a folder with custom configuration and provide the path to buildroot through BR2_ROOTFS_OVERLAY |
  
- Step6:
-        Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm  
-           command will redirect the execution of the uboot to the mentioed ITB flashed
+### Step 6: Flashing
+<p align="justify">
+Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm command will redirect the execution of the uboot to the mentioed ITB flashed
+</p>
            
-        Note:
-         The rootFS category is not mentioned with the image source file (*.its)
-         Please refer to the board configuration file: 
-         path<u-boot>/include/configs/nitrogen6sx.h, specially to the CONFIG_EXTRA_ENV_SETTINGS macro to  provide     
-         customized option to create the environment before starting the kernel
+<p align="justify">
+The rootFS category is not mentioned with the image source file (*.its) Please refer to the board configuration file:
+
+``` <u-boot>/include/configs/nitrogen6sx.h ```
+
+specially to the CONFIG_EXTRA_ENV_SETTINGS macro to  provide customized option to create the environment before starting the kernel.
+</p>
 
 ## Running the tests over QEMU
 
