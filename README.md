@@ -120,32 +120,11 @@ Step4)
           block diagram and also create the ITB file from the specified ITS within the folder
        2) u-boot-wtb is the resultant image with public key append, which transforms it name to "Root Of Trust", even the ITB   
           file is privately signed (Refer to the automate.sh) for a simple self explanatory steps of getting this possible.
-       
-Step5) Following are the test results as part of the above procedure
-
-![Verified Boot Demo](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo1.png)
-![Verified Boot Demo Booting](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo.png)
-
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+![Verified Boot Demo](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo1.png)
+![Verified Boot Demo Booting](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo.png)
 
 ## Built With
 
@@ -164,4 +143,7 @@ This project is distributed under the [GPLV3 License](https://opensource.org/lic
 ## Acknowledgments
 
 * Open Source Community
+* https://boundarydevices.com/high-assurance-boot-hab-dummies/
+* https://elinux.org/images/f/f8/Verified_Boot.pdf
+* https://lxr.missinglinkelectronics.com/uboot/doc/uImage.FIT/
 
