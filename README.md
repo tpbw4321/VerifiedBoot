@@ -53,10 +53,10 @@ Copy the following list of files from this repository to the respective buildroo
 
 | S.No | Item to copy          | Target         |
 | ---  | ---                   | ---            |
-| 1.   | Patches               | Common Folder  |
-| 2.   | smith-digital-sign.sh | Common Folder  |
-| 3.   | smithdigital.its      | Common Folder  |
-| 4.   | nitrogen6sx_defconfig | Common Folder  |
+| 1.   | Patches               | Common.tar.gz  |
+| 2.   | smith-digital-sign.sh | Common.tar.gz  |
+| 3.   | smithdigital.its      | Common.tar.gz  |
+| 4.   | nitrogen6sx_defconfig | Common.tar.gz  |
        
 ### Step 3: Configure
 Configure the Build root system by issuing the following command from the root directory
