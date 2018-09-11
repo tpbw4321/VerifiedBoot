@@ -116,7 +116,8 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
 
 ``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- ```
      
-    Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler as we just want to emulate the procedure.
+    Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler 
+          as we just want to emulate the procedure.
 
 ### Step 2: Get THE kernel
 
@@ -131,10 +132,11 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
  ``` qemu-system-arm -M vexpress-a9 -m 512M -serial stdio -net nic -net tap,ifname=tap0 -kernel <path/to/u-boot-wtdb> ```
 
      Note:
-     1) The automate.sh script will take care of the appending the public key to the u-boot exactly as stated within the  
-        block diagram and also create the ITB file from the specified ITS within the folder
-     2) u-boot-wtb is the resultant image with public key append, which transforms it name to "Root Of Trust", even the ITB
-        file is privately signed (Refer to the automate.sh) for a simple self explanatory steps of getting this possible.
+     1) The automate.sh script will take care of the appending the public key to the u-boot exactly as stated 
+        within the block diagram and also create the ITB file from the specified ITS within the folder
+     2) u-boot-wtb is the resultant image with public key append, which transforms it name to "Root Of Trust",
+        even the ITB file is privately signed (Refer to the automate.sh) for a simple self explanatory steps of
+        getting this possible.
 
 ## Deployment
 
