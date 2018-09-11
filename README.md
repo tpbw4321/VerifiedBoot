@@ -123,8 +123,6 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
 
 ``` git clone https://github.com/torvalds/linux ```
 
-``` git checkout -b stable v4.8 ```
-       
     Note: U-Boot and linux kernel souce is checked-in this repository under VerifiedBootDemo.tar.gz file.
        
  ### Step 3: Run on QEMU
