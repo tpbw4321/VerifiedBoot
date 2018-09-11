@@ -118,23 +118,23 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
      
     Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler as we just want to emulate the procedure.
 
-Step3)
-       git clone https://github.com/torvalds/linux
-       git checkout -b stable v4.8
-       
-       Note: 
-       Download the latest linux kernel, checkout a stable version
-       
-Step4)
-       To save the above mentioned procedures,just download the folder VerifiedBootDemo.tar.gz to get all of the essentials:
-       
-       qemu-system-arm -M vexpress-a9 -m 512M -serial stdio -net nic -net tap,ifname=tap0 -kernel path to u-boot-wtdb
+### Step 2: Get THE kernel
 
-       Note:
-       1) The automate.sh script will take care of the appending the public key to the u-boot exactly as stated within the   
-          block diagram and also create the ITB file from the specified ITS within the folder
-       2) u-boot-wtb is the resultant image with public key append, which transforms it name to "Root Of Trust", even the ITB   
-          file is privately signed (Refer to the automate.sh) for a simple self explanatory steps of getting this possible.
+``` git clone https://github.com/torvalds/linux ```
+
+``` git checkout -b stable v4.8 ```
+       
+    Note: U-Boot and linux kernel souce is checked-in this repository under VerifiedBootDemo.tar.gz file.
+       
+ ### Step 3: Run on QEMU
+ 
+ ``` qemu-system-arm -M vexpress-a9 -m 512M -serial stdio -net nic -net tap,ifname=tap0 -kernel <path/to/u-boot-wtdb> ```
+
+     Note:
+     1) The automate.sh script will take care of the appending the public key to the u-boot exactly as stated within the <br />  
+        block diagram and also create the ITB file from the specified ITS within the folder
+     2) u-boot-wtb is the resultant image with public key append, which transforms it name to "Root Of Trust", even the ITB <br />  
+        file is privately signed (Refer to the automate.sh) for a simple self explanatory steps of getting this possible.
 
 ## Deployment
 
