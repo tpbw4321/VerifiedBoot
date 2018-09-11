@@ -14,8 +14,7 @@ The Build-root platform has evolved over the years and finally with the support 
 
 For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate verified boot sequence.
 
-![VerifiedBoot](Verified-Boot.png)
-
+![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Secured-Boot.png)
 
 ### Prerequisites
 
