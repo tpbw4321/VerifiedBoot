@@ -103,21 +103,18 @@ The rootFS category is not mentioned with the image source file (*.its) Please r
 specially to the CONFIG_EXTRA_ENV_SETTINGS macro to  provide customized option to create the environment before starting the kernel.
 </p>
 
-## Running the tests over QEMU
+## Running on QEMU
 
-As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant based on IM6 platform, as the target is unavailable, we will try to demonstrate the entire procedure over the emulator to get the feel of the above steps:
+As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant and the target device was unavailable during the time of my validation, I had chosen to demonstrate the entire procedure over the emulator to get the feel of the above steps and to have a higher level of confidence that this can be brought up on silicon faster.
 
-Step1) Clone the uboot master 
-      git clone git://git.denx.de/u-boot.git
-      
-Step2)
-       make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- vexpress_ca9x4_defconfig
-       make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi-
+### Step 1: Get the latest u-boot and build it
+
+``` git clone git://git.denx.de/u-boot.git ```
+``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- vexpress_ca9x4_defconfig ```
+``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- ```
        
-       Note:
-       Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler as we just want to  
-       emulate the procedure
-       
+Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler as we just want to emulate the procedure.
+
 Step3)
        git clone https://github.com/torvalds/linux
        git checkout -b stable v4.8
