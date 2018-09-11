@@ -119,7 +119,7 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
     Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler 
           as we just want to emulate the procedure.
 
-### Step 2: Get THE kernel
+### Step 2: Get the kernel
 
 ``` git clone https://github.com/torvalds/linux ```
 
