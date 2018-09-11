@@ -43,7 +43,9 @@ It is recommended to start with the following pre-requisite.
 ## Build Instruction
 
 ### Step1: Clone the latest Buidroot from github
+
 ``` git clone https://github.com/buildroot/buildroot.git ```
+
 > The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
 
 ### Step2: Copy build files
@@ -66,8 +68,9 @@ Configure the Build root system by issuing the following command from the root d
 
 ### Step4: Build
 With the below command and provided patches we should be able to glide through the compilation process
+
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ```
-       
+
 <p align="justify">
 The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
 has all the necessary patches, board specific files and post script.
