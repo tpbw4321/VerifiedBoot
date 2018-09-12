@@ -1,4 +1,4 @@
-# VerifiedBoot
+ and # VerifiedBoot
 >Verified Boot of FIT image built using BuildRoot
 
 ## Getting Started
@@ -13,17 +13,9 @@ The Build-root platform has evolved over the years and finally with the support 
 | ITB | Combination and signed copy of config, kernel,rootfs |
 | RootFS | Non Secured Image |
 
-## Secured Boot
-
-<p align="justify">For the i.mx platform the primary root of trust will be the hardware assisted High Assurance Boot (HAB), which serves the purpose of authenticating the boot process right from the moment processor comes out of reset. Following sequence diagram has been extracted from the NXP website to demonstrate secured boot.
-</p>
-
-![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Secured-Boot.png)
-
 ## Verified Boot
 
-<p align="justify">The sequence of Verified boot follows the unsecured booting, without the use of trust zone. Even for verification and validation of the public and private hash keys, the boot process runs from unsecured execution environment. In the following diagram the section(s) marked green bubble represents un-secured items and the ones that are marked in red depicts secured components, which has been fused with privately signed hash.
-</p>
+<p align="justify">Verified boot can be achieved by digitally signing the u-boot with a public RSA followed by signing the Flattened Image Tree, herein referred as FIT which simply consist of multiple images glued together as single binary blob for example Linux kernel, RootFs, board-device-tree-blob.dtb and so on). This FIT is then signed with a private key which can only be authticated by the u-boot that is signed with the public key in former process. If for any reasons the verification failed during boot, the process is halted and the risk of loading un-secured kernel image will be averted. The following flow diagram depicts verified boot process with the help of signed FIT image. We will be following this process to acheive verified boot in this little project.</p>
 
 ![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot.png)
 
