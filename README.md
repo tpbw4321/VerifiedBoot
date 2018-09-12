@@ -1,9 +1,9 @@
- and # VerifiedBoot
+# VerifiedBoot
 >Verified Boot of FIT image built using BuildRoot
 
 ## Getting Started
 <p align="justify">
-The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials
+The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image, made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials. Following table lists the critical components to boot embedded systems and their role in verified boot
 </p>
 
 | Components | Description |
@@ -19,7 +19,7 @@ The Build-root platform has evolved over the years and finally with the support 
 
 ![Verified Boot](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot.png)
 
-### Prerequisites
+## Prerequisites
 
 It is recommended to start with the following pre-requisite.
 
