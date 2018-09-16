@@ -13,7 +13,7 @@ The Build-root platform has evolved over the years and finally with the support 
 | ITB | Combination and signed copy of config, kernel,rootfs |
 | RootFS | Non Secured Image |
 
-## Verified Boot
+## Description
 
 <p align="justify">Verified boot can be achieved by digitally signing the u-boot with a public RSA followed by signing the Flattened Image Tree, herein referred as FIT which simply consist of multiple images glued together as single binary blob for example Linux kernel, RootFs, board-device-tree-blob.dtb and so on). This FIT is then signed with a private key which can only be authticated by the u-boot that is signed with the public key in former process. If for any reasons the verification failed during boot, the process is halted and the risk of loading un-secured kernel image will be averted. The following flow diagram depicts verified boot process with the help of signed FIT image. We will be following this process to acheive verified boot in this little project.</p>
 
