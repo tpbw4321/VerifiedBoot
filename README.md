@@ -71,7 +71,7 @@ After buildroot completes its build, it runs post-build.sh script on the outputs
 Output of the compilation process if found at output directory out of the above mentioned command will have all of the host signing utilities and target booting images
 </p>
 
-``` ls ${PWD}/output ```
+``` ls <buildroot>/output/images/ ```
 
 | S.No | Folder | Description |
 | --- | --- | --- |
@@ -88,7 +88,7 @@ Flash the uboot image onto the  boot partition of the Flash, and the itb file to
 <p align="justify">
 The rootFS category is not mentioned with the image source file (*.its) Please refer to the board configuration file:
 
-``` u-boot/include/configs/udoo_neo.h ```
+``` <u-boot>/include/configs/udoo_neo.h ```
 
 specially to the CONFIG_EXTRA_ENV_SETTINGS macro to  provide customized option to create the environment before starting the kernel.
 </p>
