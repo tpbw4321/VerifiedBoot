@@ -124,8 +124,9 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
         getting this possible.
 
 ## Deployment
-![Verified Boot Demo](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo1.png)
-![Verified Boot Demo Booting](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo.png)
+![Verified Boot Demo tftp](https://github.com/tpbw4321/VerifiedBoot/blob/master/qemu-fit-1.png)
+![Verified Boot Demo iminfo](https://github.com/tpbw4321/VerifiedBoot/blob/master/qemu-fit-2.png)
+![Verified Boot Demo bootm](https://github.com/tpbw4321/VerifiedBoot/blob/master/qemu-fit-3.png)
 
 ## Authors
 * **Barron Wong** - [tpbw4321 GitHub](https://github.com/tpbw4321)
