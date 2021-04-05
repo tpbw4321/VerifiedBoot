@@ -71,7 +71,7 @@ After buildroot completes its build, it runs post-build.sh script on the outputs
 Output of the compilation process if found at output directory out of the above mentioned command will have all of the host signing utilities and target booting images
 </p>
 
-``` ls <buildroot>/output/images/ ```
+``` ls <buildroot>/output/ ```
 
 | S.No | Folder | Description |
 | --- | --- | --- |
