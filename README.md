@@ -141,7 +141,6 @@ This project is distributed under the [GPLV3 License](https://opensource.org/lic
 * https://github.com/pratapms/VerifiedBoot
 * https://elinux.org/images/f/f8/Verified_Boot.pdf
 * https://github.com/u-boot/u-boot/tree/master/doc/uImage.FIT
-* https://github.com/pratapms/VerifiedBoot
 * http://www.informit.com/articles/article.aspx?p=1647051&seqNum=5
 * https://github.com/maximeh/buildroot/blob/master/docs/manual/customize-rootfs.txt
 
