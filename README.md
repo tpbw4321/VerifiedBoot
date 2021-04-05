@@ -3,7 +3,7 @@
 
 ## Getting Started
 <p align="justify">
-The Build-root platform has evolved over the years and finally with the support to build the kernel, u-boot along with the  capabilities to build FIT image, made life easier for embedded systems. The developer just have to get the configuration straight and trigger the build for the Build-root to compile and deliver the aforementioned boot essentials. Following table lists the critical components to boot embedded systems and their role in verified boot
+This is a fork of pratapms's Verified Boot (https://github.com/pratapms/VerifiedBoot). This repo has been modified so that it can be applied to a Udoo Neo Basic which is powered by an NXP i.MX 6SoloX.
 </p>
 
 | Components | Description |
@@ -26,7 +26,7 @@ It is recommended to start with the following pre-requisite.
 | S.No | Pre-Requisite |
 | ---         |     ---      |
 | 1.   | A decent x86_64 machine money can buy     |
-| 2.   | Ubuntu 16.04 LTS running on the above       |
+| 2.   | Ubuntu 18.04 LTS running on the above       |
 | 3.   | Internet connection     |
 | 4.   | Bleeding Edge of Build-Root right from the [build-root github](https://github.com/buildroot/buildroot.git)
 | 5.   | Install arm tool chain using <br /> ``` sudo apt-get install gcc-arm-linux-gnueabihf ``` |
@@ -38,35 +38,33 @@ It is recommended to start with the following pre-requisite.
 
 ``` git clone https://github.com/buildroot/buildroot.git ```
 
-> The IMX6 platform based nitrogen6sx board was been selected to demonstrate the build procedure
+> The i.MX 6SoloX platform based Udoo Neo Basic board was been selected to demonstrate the build procedure
 
 ### Step 2: Copy build files
-Copy the following list of files from this repository to the respective buildroot folders mantioned in Target column
+```The following files will need to be copied into <buildroot>/board/udoo/common/ directory```
 
-| S.No | Item to copy          | Target         |
+| S.No | Item to copy          | Source         |
 | ---  | ---                   | ---            |
-| 1.   | Patches               | Common.tar.gz  |
-| 2.   | smith-digital-sign.sh | Common.tar.gz  |
-| 3.   | smithdigital.its      | Common.tar.gz  |
-| 4.   | nitrogen6sx_defconfig | Common.tar.gz  |
+| 1.   | post-build.sh         | common.tar.gz  |
+| 2.   | smithdigital.its      | common.tar.gz  |
+| 3.   | boot.src.txt          | common.tar.gz  |
+
+       Note: post-build.sh has been modified by prepending a slightly modified version of pratapms's script, smith-digital-sign.sh.
        
 ### Step 3: Configure
 Configure the Build root system by issuing the following command from the root directory
 
-``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- nitrogen6sx_defconfig ```
-
-<p align="justify">All of the above files are provided  part of the common.tar.gz file. The Git hub provides the modified nitrogen6sx_defconfig file to take care of all the relative changes to generate images for verified Boot. TrustZone specific Hardware & Software configurations are deferred for this secured boot demonstration due to lack of hardware capabilities.
-</p>
+``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6sx_udoo_neo_defconfig ```
 
 ### Step 4: Build
-With the below command and provided patches we should be able to glide through the compilation process
+With the below command and provided scripts we should be able to glide through the compilation process
 
 ``` make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ```
 
-<p align="justify">
-The common.tar.gz files should go into the "board/boundarydevices" of the original buildroot, this particular folder   
-has all the necessary patches, board specific files and post script.
-</p>
+After buildroot completes its build, it runs post-build.sh script on the outputs and does the following:
+* Creates a private and public keys using RSA-2048 and OpenSSL
+* Signs the kernel and device tree binary and creates a FIT image based on the image tree source file
+* Appends the signed device tree binary to the u-boot binary
        
 ### Step 5: Output
 <p align="justify">
@@ -84,13 +82,13 @@ Output of the compilation process if found at output directory out of the above 
  
 ### Step 6: Flashing
 <p align="justify">
-Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm command will redirect the execution of the uboot to the mentioed ITB flashed
+Flash the uboot image onto the  boot partition of the Flash, and the itb file to a predefined offset, the bootm command will redirect the execution of the uboot to the mentioned ITB flashed
 </p>
            
 <p align="justify">
 The rootFS category is not mentioned with the image source file (*.its) Please refer to the board configuration file:
 
-``` <u-boot>/include/configs/nitrogen6sx.h ```
+``` u-boot/include/configs/udoo_neo.h ```
 
 specially to the CONFIG_EXTRA_ENV_SETTINGS macro to  provide customized option to create the environment before starting the kernel.
 </p>
@@ -104,12 +102,9 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
 
 ``` git clone git://git.denx.de/u-boot.git ```
 
-``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- vexpress_ca9x4_defconfig ```
+``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- vexpress_ca9x4_defconfig ```
 
-``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- ```
-     
-    Note: Please download the arm-non-linux-gnueabi compiler, we don't need any hard float capable compiler 
-          as we just want to emulate the procedure.
+``` make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- ```
 
 ### Step 2: Get the kernel
 
@@ -119,7 +114,7 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
        
  ### Step 3: Run on QEMU
  
- ``` qemu-system-arm -M vexpress-a9 -m 512M -serial stdio -net nic -net tap,ifname=tap0 -kernel <path/to/u-boot-wtdb> ```
+ ``` qemu-system-arm -machine vexpress-a9  -m 1G -display none -serial stdio -kernel <path/to/u-boot-wdtb> ```
 
      Note:
      1) The automate.sh script will take care of the appending the public key to the u-boot exactly as stated 
@@ -129,12 +124,11 @@ As the above mentioned steps specifically targets i.MX 6 ARM-Cortex A9 variant a
         getting this possible.
 
 ## Deployment
-
 ![Verified Boot Demo](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo1.png)
 ![Verified Boot Demo Booting](https://github.com/pratapms/VerifiedBoot/blob/master/Verified-Boot-Demo.png)
 
 ## Authors
-
+* **Barron Wong** - [tpbw4321 GitHub](https://github.com/tpbw4321)
 * **Pratap Maddimsetty** - [PratapMs GitHub](https://github.com/pratpms)
 
 ## License
@@ -144,10 +138,10 @@ This project is distributed under the [GPLV3 License](https://opensource.org/lic
 ## Acknowledgments
 
 * Open Source Community
-* https://boundarydevices.com/high-assurance-boot-hab-dummies/
+* https://github.com/pratapms/VerifiedBoot
 * https://elinux.org/images/f/f8/Verified_Boot.pdf
-* https://lxr.missinglinkelectronics.com/uboot/doc/uImage.FIT/
-* https://events.static.linuxfound.org/sites/events/files/slides/U-Boot%20FIT%20for%20Xen.pdf
+* https://github.com/u-boot/u-boot/tree/master/doc/uImage.FIT
+* https://github.com/pratapms/VerifiedBoot
 * http://www.informit.com/articles/article.aspx?p=1647051&seqNum=5
 * https://github.com/maximeh/buildroot/blob/master/docs/manual/customize-rootfs.txt
 
